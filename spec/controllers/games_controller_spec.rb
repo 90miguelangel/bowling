@@ -2,6 +2,8 @@ require 'rails_helper'
 
 RSpec.describe GamesController, type: :controller do
 
+  let(:params) { {frames: 'XXXXXXXXXXXX'} }
+
   describe "GET #new" do
     it "returns http success" do
       get :new
@@ -9,9 +11,9 @@ RSpec.describe GamesController, type: :controller do
     end
   end
 
-  describe "GET #create" do
+  describe "POST #create" do
     it "returns http success" do
-      get :create
+      post :create, params: { game: params }
       expect(response).to have_http_status(:success)
     end
   end
