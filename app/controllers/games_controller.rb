@@ -3,13 +3,18 @@ class GamesController < ApplicationController
   end
 
   def create
-    frames = params[:game][:frames]
-    game = Game.new frames
+    game = Game.new game_params[:frames]
     @score = game.get_score
 
     respond_to do | format |
       format.html { render :create }
       format.json { render json: { score: @score } }
     end
+  end
+
+  private
+
+  def game_params
+    params.require(:game).permit(:frames)
   end
 end
