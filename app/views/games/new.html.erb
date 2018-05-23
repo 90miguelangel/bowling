@@ -1,0 +1,12 @@
+<h1>Games#new</h1>
+<%= form_for(:game, url: { action: 'create' }) do |f| %>
+
+  <div class="field">
+    <%= f.label :frames %>
+    <%= f.text_field :frames %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
