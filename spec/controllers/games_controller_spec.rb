@@ -18,4 +18,11 @@ RSpec.describe GamesController, type: :controller do
     end
   end
 
+  describe "POST #score" do
+    it "returns 300 when all frames are strikes" do
+      post :create, params: { game: { frames: 'XXXXXXXXXXXX' } }, format: :json
+      json ||= JSON.parse(response.body, symbolize_names: true)
+      expect(json[:score]).to eq(300)
+    end
+  end
 end
